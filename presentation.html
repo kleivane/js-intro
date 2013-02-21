@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Introduction to Javascript</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="http://gnab.github.com/remark/downloads/remark-0.4.4.min.js" type="text/javascript">
     </script>
@@ -37,12 +37,85 @@ What is JS?
 * interpreted language
 * browser environment
 ** about to break out
+* loose typing
+* mainstream functional programming
 
 ---
 
-# Minecraft analogy
-
 ![Minecraft](http://minecraftmuseum.net/gallery/tmink1-3.jpg)
+
+---
+
+# Basics types
+
+    .JavaScript
+    var a = "a string";     // strings
+    
+    typeof a // "string"
+
+    
+    a = 1;                  // numbers
+    
+    typeof a // "number"
+
+    
+    a = function(){         // functions
+      return 1;
+    };
+    
+    typeof a // "function"
+
+    a() // 1;
+
+
+---
+
+# Combined types
+    .JavaScript
+    a = [1, "a string"];    // arrays
+    
+    a[0] // 1
+
+    typeof a // "object"
+
+    a = {                   // object literal
+      b: "Another string",
+      c: 1
+    };
+
+    typeof a // "object"
+
+    a.b // "Another string"
+    a["c"] // 1
+
+---
+
+# Functions
+
+* functions as return values
+* function as input values
+
+* 
+
+
+---
+
+# Inheritance
+
+3 types of inheritance
+
+4Angular prototypal inheritance is the most important
+
+---
+
+# Asynkronitet
+
+* Ajax, domevents, setTimeout
+* callbacks
+* events
+* promises
+
+
 
     </textarea>
     <div id="slideshow"></div>
