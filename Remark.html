@@ -183,10 +183,34 @@ Declaration through keyword `var`
     var myVariable = "Hello there";
     myVariable // "Hello there"
 
+Assigning a value is not neccessary
+
+    .javascript
     var myOtherVariable;
     myOtherVariable // undefined
 
-If you forget......
+]
+
+---
+
+.left-column[
+  ## Variables and types
+]
+.right-column[
+
+Declaration through keyword `var`
+    
+    .javascript
+    var myVariable = "Hello there";
+    myVariable // "Hello there"
+
+Assigning a value is not neccessary
+
+    .javascript
+    var myOtherVariable;
+    myOtherVariable // undefined
+
+If you forget `var` 
 
     .javascript
     myVariable = "Hello global";    
@@ -334,7 +358,6 @@ Safe addition:
 ]
 .right-column[
 
-Do
 
 `while`
 
@@ -375,15 +398,6 @@ template: inverse
 
     repeat("Hello") // "Hellohello"
     
-Named parameters are for redability!
-
-    .javascript
-    function repeat(){
-      return arguments[0] + arguments[0];
-    }
-    
-    repeat("Hello") // "Hellohello"
-
 ]
 
 ---
@@ -392,8 +406,68 @@ Named parameters are for redability!
 ]
 .right-column[
 
+    .javascript
+    function repeat(string){
+      return string + string;
+    }
+
+    repeat("Hello") // "Hellohello"
+
+    typeof repeat // "function"
+    
+Named parameters are for redability!
+
+    .javascript
+    function repeat(){
+      return arguments[0] + arguments[0];
+    };
+    
+    repeat("Hello"); // "Hellohello"
+
+]
+
+---
+.left-column[
+  ## Functions
+  ## Returns
+]
+.right-column[
+
 *Functions as first-class citizens*
+
+
+    .javascript
+    function repeat(string){
+      return function(){
+        return string + string;
+      };
+    };
+
+    var repeatHi = repeat("Hi");
+    repeatHi() //"HiHi"
   
+]
+
+---
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+]
+.right-column[
+
+*Functions as first-class citizens*
+
+    .javascript
+    var numbers = [4, 2, 5, 1, 11, 3];
+    numbers.sort(); // [1, 11, 2, 3, 4, 5]
+  
+    var numbers = [4, 2, 5, 1, 11, 3];
+    numbers.sort(function(a, b){
+      return a - b; 
+    }); 
+    
+    numbers.sort(); // [1, 11, 2, 3, 4, 5]
 ]
 ---
 .left-column[
@@ -402,7 +476,12 @@ Named parameters are for redability!
 ]
 .right-column[
 
-
+    .javascript
+    function repeat(string){
+      return function(){
+        return string + string;
+      };
+    };
 ]
 ---
 
