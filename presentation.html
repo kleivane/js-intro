@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
   <head>
     <title>Introduction to Javascript</title>
@@ -36,7 +36,7 @@ What is JS?
 
 * interpreted language
 * browser environment
-** about to break out
+ * about to break out
 * loose typing
 * mainstream functional programming
 
@@ -54,19 +54,21 @@ What is JS?
     typeof a // "string"
 
     
-    a = 1;                  // numbers
+    var b = 1;                  // numbers
     
-    typeof a // "number"
+    typeof b // "number"
 
-    
-    a = function(){         // functions
+
+    var c = true; 
+
+    typeof c // boolean
+
+
+    var d = function(){         // functions
       return 1;
     };
     
-    typeof a // "function"
-
-    a() // 1;
-
+    typeof d // "function"
 
 ---
 
@@ -78,7 +80,7 @@ What is JS?
 
     typeof a // "object"
 
-    a = {                   // object literal
+    a = {                   // object literal (map/dictionary)
       b: "Another string",
       c: 1
     };
@@ -87,6 +89,38 @@ What is JS?
 
     a.b // "Another string"
     a["c"] // 1
+
+---
+
+Dynamic objects
+
+---
+
+A note 
+
+Global variables
+
+
+---
+
+# Control flow
+
+while
+
+for
+
+if
+
+
+// When you are certain of yourself
+
+for in 
+
+switch
+
+with  
+
+
 
 ---
 
@@ -108,13 +142,40 @@ What is JS?
 
 ---
 
-# Asynkronitet
+# JQUERY
+
+* great DOM-abstraction
+* handles AJAX-calls
+
+Is no excuse..
+
+---
+
+# Async
 
 * Ajax, domevents, setTimeout
 * callbacks
 * events
 * promises
 
+---
+
+# Mentions
+
+<!-- Need to know basis -->
+
+* Regexp
+* The bad parts 
+
+
+---
+
+# Readings
+
+* [Eloquent JavaScript|http://eloquentjavascript.net/]
+* The Good Parts
+* Effective JavaScript
+* [Mozilla Developer Network|https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort]
 
 
     </textarea>
