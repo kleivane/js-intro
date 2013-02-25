@@ -166,7 +166,7 @@ Declaration through keyword `var`
     var myVariable = "Hello there";
     myVariable // "Hello there"
 
-    <!-- assigning with =  -->
+<!-- assigning with =  -->
 
 ]
 
@@ -197,7 +197,7 @@ If you forget......
 
 ---
 .left-column[
-  ## Variables and types
+  ## Primitives
   ## String
 ]
 .right-column[
@@ -214,7 +214,7 @@ Strings are sequences of Unicode characters.
 
 ---
 .left-column[
-  ## Variables and types
+  ## Primitives
   ## String
   ## Boolean 
 ]
@@ -222,10 +222,13 @@ Strings are sequences of Unicode characters.
 
   `true` and `false`
 
+    .javascript
+    typeof true // "boolean" 
+
 ]
 ---
 .left-column[
-  ## Variables and types
+  ## Primitives
   ## String
   ## Boolean 
   ## Number
@@ -241,6 +244,10 @@ Normal numeric operations are supported, as well as special mathematics through 
 
 For parsing numbers from strings `parseInt` and `parseFloat` can be used.
 
+    .javascript
+    typeof 1 // "number" 
+
+
 Special values:
 
 - `NaN` results from `parseInt("a text")`
@@ -248,12 +255,207 @@ Special values:
 
 ]
 ---
+
+.left-column[
+  ## Object
+
+]
+.right-column[
+
+A collection of key - value pairs
+
+- Dictonary
+- Hash
+- Hashmap
+
+The key is a string, the value can be any javascript value.
+
+    .javascript
+    var object = {};
+
+    object = {
+      name: "Tine",
+      twitter: {
+        username: "@tinekl",
+        tweets: 1
+      }
+    };
+
+    object.name // "Tine"
+    object["name"] // "Tine"
+
+    var u = "name";
+    object[u] // "Tine" - u is evaluated runtime
+
+    typeof object // "object"
+]
+
+---
+
+.left-column[
+  ## Object
+  ## Array
+
+]
+.right-column[
+
+    .javascript
+    var array = [];
+
+    array = ["one", "two"];
+
+    array[0] = "one";
+
+    array.length // 2 
+
+    typeof array // object 
+
+Length is one more than the highest index
+
+    .javascript
+    var array = [];
+    array[98] // undefined
+    array[99] = "one";
+
+    array.length //100
+
+Safe addition:
+
+- `array.push(element)` 
+- `array[array.length] = element`
+
+]
+
+---
+
+.left-column[
+  ## Control structures
+
+]
+.right-column[
+
+Do
+
+`while`
+
+`for`
+
+`if, else if, else`
+
+
+Proceed with caution:
+
+`for .. in`
+
+`switch`
+
+
+Don't:
+
+`with`
+
+]
+
+
+---
 template: inverse
 
 ## Functions 
 
 ---
 .left-column[
+  ## Functions
+]
+.right-column[
+
+    .javascript
+    function repeat(string){
+      return string + string;
+    }
+
+    repeat("Hello") // "Hellohello"
+    
+Named parameters are for redability!
+
+    .javascript
+    function repeat(){
+      return arguments[0] + arguments[0];
+    }
+    
+    repeat("Hello") // "Hellohello"
+
+]
+
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+
+*Functions as first-class citizens*
+  
+]
+---
+.left-column[
+  ## Functions
+  ## Scope
+]
+.right-column[
+
+
+]
+---
+
+this
+
+---
+
+Calling functions
+
+---
+
+template: inverse
+
+## Inheritance 
+
+---
+
+template: inverse
+
+## Asyncronous operations 
+
+---
+
+jquery
+
+---
+
+## Async
+
+* Ajax, domevents, setTimeout
+* callbacks
+* events
+* promises
+
+---
+
+.left-column[
+  ## Left out
+]
+.right-column[
+
+- `Regexp`
+- `Date`
+- falsy values
+- type coercion
+
+]
+
+
+---
+
+.left-column[
+  ## Left out
   ## Resources
 ]
 .right-column[
