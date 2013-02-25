@@ -466,12 +466,14 @@ Named parameters are for redability!
     numbers.sort(function(a, b){
       return a - b; 
     }); 
-    
+
     numbers.sort(); // [1, 11, 2, 3, 4, 5]
 ]
 ---
 .left-column[
   ## Functions
+  ## Returns
+  ## Input 
   ## Scope
 ]
 .right-column[
@@ -482,10 +484,29 @@ Named parameters are for redability!
         return string + string;
       };
     };
+
+
 ]
 ---
 
-this
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+  ## Scope
+  ## this & new
+]
+.right-column[
+
+    .javascript
+    function repeat(string){
+      return function(){
+        return string + string;
+      };
+    };
+
+
+]
 
 ---
 
@@ -505,16 +526,147 @@ template: inverse
 
 ---
 
-jquery
+.left-column[
+  ## Async
+]
+.right-column[
+
+ - JavaScript executes in a non-blocking way by using an event queue. 
+ - While executing its "run-to-completion" policy guaratees that variables does not change due to concurrency. 
+- Don't put blocking code on the queue! 
+
+]
 
 ---
 
-## Async
+.left-column[
+  ## Async
+  ## Operations
+]
+.right-column[
 
-* Ajax, domevents, setTimeout
-* callbacks
-* events
-* promises
+ - `XHttpRequest`
+ - setTimeout`
+ - animations
+ - browser events
+
+]
+
+---
+
+.left-column[
+  ## Async
+  ## Operations
+  ## Callback
+
+]
+.right-column[
+
+    .javascript
+    $.get("/url", function(data){
+      console.log("Fetched");
+      //...
+    });
+    console.log("Start");
+
+    // prints "Start"
+    // url returns
+    // prints "Fetched"
+
+]
+
+---
+
+.left-column[
+  ## Async
+  ## Operations
+  ## Callback
+
+]
+.right-column[
+
+    .javascript
+    $("button").click(function(){
+      console.log("Clicked");
+      // Handle user click...
+    });
+    console.log("Start");
+
+    // prints "Start"
+    // url returns
+    // prints "Fetched"
+
+]
+
+---
+
+.left-column[
+  ## Handling async
+  ## Callbacks
+
+]
+.right-column[
+
+    .javascript
+    $.get("/url", function(data){
+      console.log("Fetched");
+      //...
+    });
+    console.log("Start");
+
+    // prints "Start"
+    // url returns
+    // prints "Fetched"
+]
+
+
+---
+
+.left-column[
+  ## Handling async
+  ## Callbacks
+  ## Events
+
+]
+.right-column[
+
+    .javascript
+    $.get("/url", function(data){
+      console.log("Fetched");
+      //...
+    });
+    console.log("Start");
+
+    // prints "Start"
+    // url returns
+    // prints "Fetched"
+]
+
+
+---
+
+.left-column[
+  ## Handling async
+  ## Callbacks
+  ## Events
+  ## Promises
+
+]
+.right-column[
+
+    .javascript
+    $.get("/url", function(data){
+      console.log("Fetched");
+      //...
+    });
+    console.log("Start");
+
+    // prints "Start"
+    // url returns
+    // prints "Fetched"
+]
+
+
 
 ---
 
@@ -542,13 +694,16 @@ jquery
 Online:
 
 * [Eloquent JavaScript](http://eloquentjavascript.net/)
-* [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort)
-
 
 Books:
 
 * The Good Parts
 * Effective JavaScript
+
+For references: 
+
+* [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort)
+
 
 ]
 ---
