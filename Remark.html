@@ -882,7 +882,8 @@ Events can be implemented by you or from small libraries as [EventEmitter](https
     .javascript
     var draw = function(template){
       //Draw the template
-    }
+    };
+
     $.get("/template").then(draw);
 ]
 
@@ -901,7 +902,8 @@ Events can be implemented by you or from small libraries as [EventEmitter](https
     .javascript
     var draw = function(template){
       //Draw the template
-    }
+    };
+
     $.get("/template").then(draw);
     
     
@@ -911,7 +913,7 @@ Handling multiple asyncronous requests
     .javascript
     var draw = function(template, data){
       //Draw the template with data
-    }
+    };
 
     $.when($.get("/template"), $.get("/data")).then(draw);
     
@@ -929,7 +931,7 @@ Handling multiple asyncronous requests
 - `Regexp`
 - `Date`
 - falsy values
-- type coercion
+- suprising type conversion
 - `typeof` - operator
 - using `this` in callbacks
 - lots of quirks
