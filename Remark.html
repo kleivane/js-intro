@@ -139,12 +139,11 @@ layout: false
 
 - Dynamic
 
-- Loose typing
+- Dynamic typing with implicit type conversions
 
 - Object-oriented
 
-- Functions as first-class objects
- - First mainstream functional proramming language?
+- Functions as first-class values
 
 - Standard .red[*] across browsers
 
@@ -165,8 +164,6 @@ Declaration through keyword `var`
     .javascript
     var myVariable = "Hello there";
     myVariable // "Hello there"
-
-<!-- assigning with =  -->
 
 ]
 
@@ -441,18 +438,17 @@ template: inverse
 
     typeof repeat // "function"
 
-Fuctions can be variables
+Functions can be anonymous
 
     .javascript
-    var repeat = function(string){
+    function(string){
       return string + string;
     }
-
-    repeat("Hello") // "HelloHello"
 
 ]
 
 ---
+
 .left-column[
   ## Functions
 ]
@@ -463,15 +459,42 @@ Fuctions can be variables
       return string + string;
     }
 
-    repeat("Hello") // "Hellohello"
+    repeat("Hello") // "HelloHello"
 
     typeof repeat // "function"
+
+Functions can be anonymous
+
+    .javascript
+    function(string){
+      return string + string;
+    }
+
+
+and anonymous functions can be assigned to variables
     
-Named parameters are for redability!
+    .javascript
+    var repeat = function(string){
+      return string + string;
+    }
+
+    repeat("Hello") // "HelloHello"
+
+
+]
+
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+    
+The named parameters are for redability and can be left out!
 
     .javascript
     function repeat(){
-      return arguments[0] + arguments[0];
+      var string = arguments[0];
+      return string + string;
     };
     
     repeat("Hello"); // "Hellohello"
@@ -485,7 +508,7 @@ Named parameters are for redability!
 ]
 .right-column[
 
-*Functions as first-class citizens*
+*Higher order functions*
 
 
     .javascript
@@ -508,15 +531,16 @@ Named parameters are for redability!
 ]
 .right-column[
 
-*Functions as first-class citizens*
+*Higher order functions*
 
     .javascript
     var numbers = [4, 2, 5, 1, 11, 3];
     numbers.sort(); // [1, 11, 2, 3, 4, 5]
   
-    numbers.sort(function(a, b){
+    var comparator = function(a, b){
       return a - b; 
-    }); // [1, 2, 3, 4, 5, 11]
+    };
+    numbers.sort(comparator); // [1, 2, 3, 4, 5, 11]
 
 ]
 ---
@@ -538,28 +562,6 @@ Named parameters are for redability!
 <!-- The returning function has no explicit reference to the argument variable string, yet it is still available-->
 ]
 
----
-.left-column[
-  ## Functions
-  ## Returns
-  ## Input 
-  ## Scope
-]
-.right-column[
-
-    .javascript
-    function repeat(string){
-      return function(){
-        return string + string;
-      };
-    };
-
-JavaScript has *function scope*
-
-*Inner* functions has access to all variables of the *outer* function.
-
-   
-]
 
 ---
 .left-column[
@@ -570,21 +572,14 @@ JavaScript has *function scope*
 ]
 .right-column[
 
-    .javascript
-    function repeat(string){
-      return function(){
-        return string + string;
-      };
-    };
-
 JavaScript has *function scope*
 
-*Inner* functions has access to all variables of the *outer* function.
+*Inner* functions has access to all variables of the *outer* function at the point of declaration.
 
     .javascript
     function counter(){
-    var count  = 0;
-      return function(){
+      var count  = 0;
+        return function(){
           count = count + 1;
           return count;
       }
@@ -593,9 +588,8 @@ JavaScript has *function scope*
     var inc = counter();
     inc() // 1
     inc() // 2
+    var count = 100; // This does not affect the inc-functions
     inc() // 3
-    inc.count // undefined
-    
 
 ]
 
@@ -606,15 +600,16 @@ JavaScript has *function scope*
   ## Returns
   ## Input 
   ## Scope
-  ## this & new
+  ## Constructor functions
 ]
 .right-column[
 
     .javascript 
-    var Repeater = function(string){
+    function Repeater(string){
       this.repeat = function(){
          return string + string;
       };
+      return this; // this happens implicit
     }
 
     var object = new Repeater("hi");
@@ -629,55 +624,20 @@ JavaScript has *function scope*
   ## Returns
   ## Input 
   ## Scope
-  ## this & new
+  ## Constructor functions
 ]
 .right-column[
 
     .javascript 
-    var Repeater = function(string){
+    function Repeater(string){
       this.repeat = function(){
          return string + string;
       };
+      return this; // this happens implicit
     }
 
     var object = Repeater("hi"); // new ommitted!!
-    object // undefined
     window.repeat() // "hihi"
-]
-
----
-
-.left-column[
-  ## Functions
-  ## Returns
-  ## Input 
-  ## Scope
-  ## this & new
-]
-.right-column[
-    
-    .javascript 
-    var Repeater = function(string){
-      this.repeat = function(){
-         return string + string;
-      };
-    }
-
-    var object = Repeater("hi"); // new ommitted!!
-    object // undefined
-    window.repeat() // "hihi"
-
-Beware of which `this` you are referring to!
-  
-    .javascript 
-    var Repeater = function(string){
-      $.click(".repeatButton", function(){
-        alert(this.repeat()); // FAILING!
-      })
-      this.repeat = function(){
-         return string + string;
-      };
-     }
 ]
 
 ---
@@ -834,6 +794,7 @@ template: inverse
 
 ]
 
+
 ---
 
 .left-column[
@@ -851,9 +812,34 @@ template: inverse
        })
     });
 
-Use bind or named callbacks
+]
 
+---
 
+.left-column[
+  ## Handling async
+  ## Callbacks
+
+]
+.right-column[
+
+    .javascript
+    $.get("/url", function(data){
+       $.get("/secondUrl", function(moreData){
+        // Take action
+
+       })
+    });
+
+Using named callbacks
+
+    .javascript
+    var callback =  function(data){
+       $.get("/secondUrl", function(moreData){
+        // Take action
+       })
+    });
+    $.get("/url", callback);
 
 ]
 
@@ -873,7 +859,7 @@ Use bind or named callbacks
       $(document).trigger("custom-event", data);
     });
     
-    $(document).on("custom-event", function(){
+    $(document).on("custom-event", function(data){
       //take action
     })
 
@@ -894,11 +880,10 @@ Events can be implemented by you or from small libraries as [EventEmitter](https
 .right-column[
 
     .javascript
-    $.get("/template").then(draw);
-    
     var draw = function(template){
       //Draw the template
     }
+    $.get("/template").then(draw);
 ]
 
 ---
@@ -914,20 +899,23 @@ Events can be implemented by you or from small libraries as [EventEmitter](https
 
     
     .javascript
-    $.get("/template").then(draw);
-    
     var draw = function(template){
       //Draw the template
     }
+    $.get("/template").then(draw);
+    
+    
 
 Handling multiple asyncronous requests
 
     .javascript
-    $.when($.get("/template"), $.get("/data")).then(draw);
-    
     var draw = function(template, data){
       //Draw the template with data
     }
+
+    $.when($.get("/template"), $.get("/data")).then(draw);
+    
+    
 ]
 
 
@@ -942,6 +930,8 @@ Handling multiple asyncronous requests
 - `Date`
 - falsy values
 - type coercion
+- `typeof` - operator
+- using `this` in callbacks
 - lots of quirks
 ]
 
