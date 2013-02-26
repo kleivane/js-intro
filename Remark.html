@@ -649,9 +649,55 @@ template: inverse
 ]
 .right-column[
 
+    .javascript
+    var User = function(name){
+      this.name = name;
+
+      this.say = function(){
+        return "Hi " + this.name;
+      };
+    };
 
 ]
 
+---
+
+.left-column[
+  ## Prototype
+]
+.right-column[
+
+    .javascript
+    var User = function(name){
+      this.name = name;
+    };
+
+    User.prototype.say = function(){
+     return "Hi " + this.name;
+    };
+]
+
+
+
+
+---
+.left-column[
+  ## Prototype
+  ## Lookups
+]
+.right-column[
+
+The property chain
+
+    | - the object itself
+    | -- object.prototype
+    | --- prototype of object.prototype
+
+
+- Do not confuse `prototype` with `__proto__`
+- Be careful when modifying shared objects `Array.prototype` and `String.prototype`
+
+]
 
 ---
 
@@ -815,7 +861,7 @@ template: inverse
 - `Date`
 - falsy values
 - type coercion
-
+- lots of quirks
 ]
 
 
