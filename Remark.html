@@ -397,6 +397,9 @@ template: inverse
     }
 
     repeat("Hello") // "Hellohello"
+
+    typeof repeat // "function"
+
     
 ]
 
@@ -485,8 +488,70 @@ Named parameters are for redability!
       };
     };
 
+<!-- The returning function has no explicit reference to the argument variable string, yet it is still available-->
+]
+
+---
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+  ## Scope
+]
+.right-column[
+
+    .javascript
+    function repeat(string){
+      return function(){
+        return string + string;
+      };
+    };
+
+JavaScript has *function scope*
+
+*Inner* functions has access to all variables of the *outer* function.
+
+   
+]
+
+---
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+  ## Scope
+]
+.right-column[
+
+    .javascript
+    function repeat(string){
+      return function(){
+        return string + string;
+      };
+    };
+
+JavaScript has *function scope*
+
+*Inner* functions has access to all variables of the *outer* function.
+
+    .javascript
+    function counter(){
+    var count  = 0;
+      return function(){
+          count = count + 1;
+          return count;
+      }
+    };
+    
+    var inc = counter();
+    inc() // 1
+    inc() // 2em
+    inc() // 3
+    inc.count // undefined
+    
 
 ]
+
 ---
 
 .left-column[
@@ -498,16 +563,75 @@ Named parameters are for redability!
 ]
 .right-column[
 
-    .javascript
-    function repeat(string){
-      return function(){
-        return string + string;
+    .javascript 
+    var Repeater = function(string){
+      this.repeat = function(){
+         return string + string;
       };
-    };
+    }
 
+    var object = new Repeater("hi");
+    object.repeat() // "hihi"
 
 ]
 
+---
+
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+  ## Scope
+  ## this & new
+]
+.right-column[
+
+    .javascript 
+    var Repeater = function(string){
+      this.repeat = function(){
+         return string + string;
+      };
+    }
+
+    var object = Repeater("hi"); // new ommitted!!
+    object // undefined
+    window.repeat() // "hihi"
+]
+
+---
+
+.left-column[
+  ## Functions
+  ## Returns
+  ## Input 
+  ## Scope
+  ## this & new
+]
+.right-column[
+    
+    .javascript 
+    var Repeater = function(string){
+      this.repeat = function(){
+         return string + string;
+      };
+    }
+
+    var object = Repeater("hi"); // new ommitted!!
+    object // undefined
+    window.repeat() // "hihi"
+
+Beware of which `this` you are referring to!
+  
+    .javascript 
+    var Repeater = function(string){
+      $.click(".repeatButton", function(){
+        alert(this.repeat()); // FAILING!
+      })
+      this.repeat = function(){
+         return string + string;
+      };
+     }
+]
 ---
 
 Calling functions
@@ -519,6 +643,18 @@ template: inverse
 ## Inheritance 
 
 ---
+
+.left-column[
+  ## Prototype
+]
+.right-column[
+
+
+]
+
+
+---
+
 
 template: inverse
 
