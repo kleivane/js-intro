@@ -679,9 +679,6 @@ Beware of which `this` you are referring to!
       };
      }
 ]
----
-
-Calling functions
 
 ---
 
@@ -705,6 +702,11 @@ template: inverse
       };
     };
 
+    var me = new User("Tine");
+    me.say() // "Hi Tine"
+
+    var you = new User("There");
+    you.say() // "Hi There"
 ]
 
 ---
@@ -722,6 +724,12 @@ template: inverse
     User.prototype.say = function(){
      return "Hi " + this.name;
     };
+
+    var me = new User("Tine");
+    me.say() // "Hi Tine"
+
+    var you = new User("There");
+    you.say() // "Hi There"
 ]
 
 
@@ -774,7 +782,7 @@ template: inverse
 .right-column[
 
  - `XHttpRequest`
- - setTimeout`
+ - `setTimeout`
  - animations
  - browser events
 
@@ -821,8 +829,8 @@ template: inverse
     console.log("Start");
 
     // prints "Start"
-    // url returns
-    // prints "Fetched"
+    // user clicks the button
+    // prints "Clicked"
 
 ]
 
