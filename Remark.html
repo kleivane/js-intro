@@ -313,6 +313,28 @@ The key is a string, the value can be any javascript value.
 
     typeof object // "object"
 ]
+---
+
+.left-column[
+  ## Object
+  ## Array
+
+]
+.right-column[
+
+    .javascript
+    var array = [];
+
+    array = ["one", "two"];
+
+    array[0] = "one";
+    array[0] // "one"
+
+    array.length // 2 
+
+    typeof array // object 
+
+]
 
 ---
 
@@ -329,6 +351,7 @@ The key is a string, the value can be any javascript value.
     array = ["one", "two"];
 
     array[0] = "one";
+    array[0] // "one"
 
     array.length // 2 
 
@@ -396,11 +419,37 @@ template: inverse
       return string + string;
     }
 
-    repeat("Hello") // "Hellohello"
+    repeat("Hello") // "HelloHello"
 
     typeof repeat // "function"
 
     
+]
+
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+
+    .javascript
+    function repeat(string){
+      return string + string;
+    }
+
+    repeat("Hello") // "HelloHello"
+
+    typeof repeat // "function"
+
+Fuctions can be variables
+
+    .javascript
+    var repeat = function(string){
+      return string + string;
+    }
+
+    repeat("Hello") // "HelloHello"
+
 ]
 
 ---
@@ -465,12 +514,10 @@ Named parameters are for redability!
     var numbers = [4, 2, 5, 1, 11, 3];
     numbers.sort(); // [1, 11, 2, 3, 4, 5]
   
-    var numbers = [4, 2, 5, 1, 11, 3];
     numbers.sort(function(a, b){
       return a - b; 
-    }); 
+    }); // [1, 2, 3, 4, 5, 11]
 
-    numbers.sort(); // [1, 11, 2, 3, 4, 5]
 ]
 ---
 .left-column[
@@ -545,7 +592,7 @@ JavaScript has *function scope*
     
     var inc = counter();
     inc() // 1
-    inc() // 2em
+    inc() // 2
     inc() // 3
     inc.count // undefined
     
@@ -856,6 +903,16 @@ Events can be implemented by you or from small libraries as [EventEmitter](https
 
 ]
 .right-column[
+
+    
+    .javascript
+    $.get("/template").then(draw);
+    
+    var draw = function(template){
+      //Draw the template
+    }
+
+Handling multiple asyncronous requests
 
     .javascript
     $.when($.get("/template"), $.get("/data")).then(draw);
