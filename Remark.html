@@ -244,7 +244,7 @@ Strings are sequences of Unicode characters.
   `true` and `false`
 
     .javascript
-    typeof true // "boolean" 
+    var yes = true;
 
 ]
 ---
@@ -259,15 +259,13 @@ Strings are sequences of Unicode characters.
 JavaScript numbers are *"double-precision 64-bit format IEEE 754 values"*.  
 
     .javascript
+    var number = 5;
+
     0.1 + 0.2 == 0.30000000000000004
 
 Normal numeric operations are supported, as well as special mathematics through the object `Math`.
 
 For parsing numbers from strings `parseInt` and `parseFloat` can be used.
-
-    .javascript
-    typeof 1 // "number" 
-
 
 Special values:
 
@@ -308,7 +306,6 @@ The key is a string, the value can be any javascript value.
     var u = "name";
     object[u] // "Tine" - u is evaluated runtime
 
-    typeof object // "object"
 ]
 ---
 
@@ -324,12 +321,13 @@ The key is a string, the value can be any javascript value.
 
     array = ["one", "two"];
 
-    array[0] = "one";
     array[0] // "one"
 
-    array.length // 2 
+    array[0] = "three";
 
-    typeof array // object 
+    array[0] // "three"
+
+    array.length // 2 
 
 ]
 
@@ -342,17 +340,18 @@ The key is a string, the value can be any javascript value.
 ]
 .right-column[
 
-    .javascript
+      .javascript
     var array = [];
 
     array = ["one", "two"];
 
-    array[0] = "one";
     array[0] // "one"
 
-    array.length // 2 
+    array[0] = "three";
 
-    typeof array // object 
+    array[0] // "three"
+
+    array.length // 2 
 
 Length is one more than the highest index
 
@@ -418,7 +417,6 @@ template: inverse
 
     repeat("Hello") // "HelloHello"
 
-    typeof repeat // "function"
 
     
 ]
@@ -436,7 +434,6 @@ template: inverse
 
     repeat("Hello") // "HelloHello"
 
-    typeof repeat // "function"
 
 Functions can be anonymous
 
@@ -461,7 +458,6 @@ Functions can be anonymous
 
     repeat("Hello") // "HelloHello"
 
-    typeof repeat // "function"
 
 Functions can be anonymous
 
@@ -609,7 +605,7 @@ JavaScript has *function scope*
       this.repeat = function(){
          return string + string;
       };
-      return this; // this happens implicit
+      return this; // this happens implicit by using new
     }
 
     var object = new Repeater("hi");
@@ -633,7 +629,7 @@ JavaScript has *function scope*
       this.repeat = function(){
          return string + string;
       };
-      return this; // this happens implicit
+      return this; // this happens implicit by using new
     }
 
     var object = Repeater("hi"); // new ommitted!!
@@ -967,7 +963,7 @@ template: inverse
 
 ## Good luck & enjoy!
 
-Twitter: @tinekl || Email: tine.kleivane@bekk.no
+Github: @kleivane || Email: tine.kleivane@bekk.no
 
 Slideshow created by and horrendously stolen from [remark](http://github.com/gnab/remark).
     </textarea>
